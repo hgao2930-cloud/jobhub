@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123456",
+      "name": "管理员",
+      "email": "admin@example.com",
+      "phone": "13800000000"
+    }
+  ],
+  "jobs": [
+    { "id": 1, "company": "网易", "position": "前端开发实习生", "location": "广州", "salary": "200-250/天", "applyDate": "2026-06-18", "status": "pending", "note": "", "userId": 1 },
+    { "id": 2, "company": "百度", "position": "前端实习生", "location": "北京", "salary": "200-280/天", "applyDate": "2026-06-15", "status": "interview", "note": "下周面试", "userId": 1 },
+    { "id": 3, "company": "阿里巴巴", "position": "Web前端实习生", "location": "杭州", "salary": "180-250/天", "applyDate": "2026-06-12", "status": "pending", "note": "", "userId": 1 },
+    { "id": 4, "company": "字节跳动", "position": "前端实习生", "location": "北京", "salary": "200-300/天", "applyDate": "2026-06-10", "status": "interview", "note": "已通过初面", "userId": 1 }
+  ]
+}
