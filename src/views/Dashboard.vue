@@ -18,6 +18,14 @@ onMounted(() => {
     fetchJobs()
 })
 
+const page = ref(1)
+const pageSize = ref(10)
+const total = computed(() => jobsList.value.length)
+
+const displayJobs = computed(() => {
+    const start = (page.value - 1) * pageSize.value
+    return jobsList.value.slice(start, start + pageSize.value)
+})
 const stats = computed(() => {
     return {
         total: jobsList.value.length,
@@ -50,19 +58,23 @@ const statusMap = {
         </el-card>
     </div>
     <el-card class="table-card">
-        <el-table :data="jobsList" stripe style="width: 100%">
+        <el-table :data="displayJobs" stripe style="width: 100%">
             <el-table-column prop="company" label="公司" />
             <el-table-column prop="position" label="职位" />
             <el-table-column prop="location" label="地点" />
             <el-table-column prop="applyDate" label="投递日期" />
             <el-table-column label="状态">
                 <template #default="scope">
-                    <el-tag :type="scope.row.status === 'pending' ? 'info' : scope.row.status === 'interview' ? 'warning' : scope.row.status === 'offer' ? 'success' : 'danger'" size="small">
+                    <el-tag
+                        :type="scope.row.status === 'pending' ? 'info' : scope.row.status === 'interview' ? 'warning' : scope.row.status === 'offer' ? 'success' : 'danger'"
+                        size="small">
                         {{ statusMap[scope.row.status] }}
                     </el-tag>
                 </template>
             </el-table-column>
         </el-table>
+        <el-pagination v-model:current-page="page" :page-size="pageSize" :total="total"
+            layout="prev, pager, next, total" @current-change="fetchJobs" background />
     </el-card>
 </template>
 
@@ -72,14 +84,17 @@ const statusMap = {
     gap: 20px;
     margin-bottom: 30px;
 }
+
 .stat-card {
     flex: 1;
     text-align: center;
 }
+
 .stat-value {
     font-size: 32px;
     font-weight: bold;
 }
+
 .stat-label {
     font-size: 14px;
     color: #999;

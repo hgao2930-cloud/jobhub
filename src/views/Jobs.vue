@@ -10,7 +10,7 @@
             <el-option label="已拒绝" value="reject" />
         </el-select>
     </div>
-    <el-table :data="displayJobs" stripe style="width: 100%">
+    <el-table :data="jobs" stripe style="width: 100%">
         <el-table-column prop="company" label="公司" />
         <el-table-column prop="position" label="职位" />
         <el-table-column prop="location" label="地点" />
@@ -18,7 +18,9 @@
         <el-table-column prop="applyDate" label="投递日期" />
         <el-table-column label="状态">
             <template #default="scope">
-                <el-tag :type="scope.row.status === 'pending' ? 'info' : scope.row.status === 'interview' ? 'warning' : scope.row.status === 'offer' ? 'success' : 'danger'" size="small">
+                <el-tag
+                    :type="scope.row.status === 'pending' ? 'info' : scope.row.status === 'interview' ? 'warning' : scope.row.status === 'offer' ? 'success' : 'danger'"
+                    size="small">
                     {{ statusMap[scope.row.status] }}
                 </el-tag>
             </template>
@@ -30,26 +32,46 @@
             </template>
         </el-table-column>
     </el-table>
+    <el-pagination v-model:current-page="page" :page-size="pageSize" :total="total" layout="total, prev, pager, next"
+        @current-change="fetchJobs" background style="margin-top: 20px; justify-content: center;" />
+
     <JobDialog :visible="dialogVisible" :job="currentJob" @update:visible="dialogVisible = $event"
         @submit="handleSubmit" />
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { getJobsApi, createJobApi, updateJobApi, deleteJobApi } from '@/api/jobs'
 import JobDialog from '../components/JobDialog.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
-const allJobs = ref([])
+const jobs = ref([])
+const page = ref(1)
+const pageSize = ref(10)
+const total = ref(0)
+const searchKeyword = ref('')
+const selectedStatus = ref('')
+
+watch(searchKeyword, () => { page.value = 1; fetchJobs() })
+watch(selectedStatus, () => { page.value = 1; fetchJobs() })
 const fetchJobs = async () => {
     try {
-        const response = await getJobsApi()
-        allJobs.value = response.data
+        const params = { _page: page.value, _limit: pageSize.value }
+        if (searchKeyword.value) {
+            params.q = searchKeyword.value
+        }
+        if (selectedStatus.value) {
+            params.status = selectedStatus.value
+        }
+        const response = await getJobsApi(params)
+        jobs.value = response.data
+        total.value = Number(response.headers['x-total-count'])
     }
     catch (error) {
         console.error('网络错误', error)
     }
 }
+
 onMounted(() => {
     fetchJobs()
 })
@@ -59,24 +81,6 @@ const statusMap = {
     offer: '已录取',
     reject: '已拒绝'
 }
-const searchKeyword = ref('')
-const selectedStatus = ref('')
-const displayJobs = computed(() => {
-    let result = allJobs.value
-    if (searchKeyword.value) {
-        const keyword = searchKeyword.value.toLowerCase()
-        result = result.filter((job) =>
-            job.company.toLowerCase().includes(keyword) ||
-            job.position.toLowerCase().includes(keyword)
-        )
-    }
-    if (selectedStatus.value) {
-        result = result.filter((job) => {
-            return job.status === selectedStatus.value
-        })
-    }
-    return result
-})
 
 const currentJob = ref(null)
 const dialogVisible = ref(false)
@@ -119,6 +123,7 @@ async function handleDelete(job) {
     margin-bottom: 20px;
     align-items: center;
 }
+
 h3 {
     margin-bottom: 16px;
 }
