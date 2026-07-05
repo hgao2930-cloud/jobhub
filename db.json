@@ -62,6 +62,176 @@
       "status": "offer",
       "note": "下周面试",
       "id": 5
+    },
+    {
+      "id": 6,
+      "company": "腾讯",
+      "position": "前端开发实习生",
+      "location": "深圳",
+      "salary": "200-300/天",
+      "applyDate": "2026-06-20",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 7,
+      "company": "美团",
+      "position": "Web前端实习生",
+      "location": "北京",
+      "salary": "200-250/天",
+      "applyDate": "2026-06-19",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 8,
+      "company": "小红书",
+      "position": "前端实习生",
+      "location": "上海",
+      "salary": "180-240/天",
+      "applyDate": "2026-06-18",
+      "status": "reject",
+      "note": "简历未通过"
+    },
+    {
+      "id": 9,
+      "company": "拼多多",
+      "position": "前端开发实习生",
+      "location": "上海",
+      "salary": "200-280/天",
+      "applyDate": "2026-06-16",
+      "status": "interview",
+      "note": "约了周三面"
+    },
+    {
+      "id": 10,
+      "company": "哔哩哔哩",
+      "position": "前端实习生",
+      "location": "上海",
+      "salary": "180-220/天",
+      "applyDate": "2026-06-14",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 11,
+      "company": "京东",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "salary": "200-260/天",
+      "applyDate": "2026-06-12",
+      "status": "reject",
+      "note": "已招满"
+    },
+    {
+      "id": 12,
+      "company": "华为",
+      "position": "Web前端实习生",
+      "location": "杭州",
+      "salary": "200-300/天",
+      "applyDate": "2026-06-10",
+      "status": "interview",
+      "note": "技术面已过"
+    },
+    {
+      "id": 13,
+      "company": "小米",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "salary": "180-250/天",
+      "applyDate": "2026-06-08",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 14,
+      "company": "滴滴",
+      "position": "前端实习生",
+      "location": "北京",
+      "salary": "200-240/天",
+      "applyDate": "2026-06-06",
+      "status": "offer",
+      "note": "已发 offer"
+    },
+    {
+      "id": 15,
+      "company": "快手",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "salary": "200-280/天",
+      "applyDate": "2026-06-04",
+      "status": "reject",
+      "note": "HC 收紧"
+    },
+    {
+      "id": 16,
+      "company": "携程",
+      "position": "Web前端实习生",
+      "location": "上海",
+      "salary": "180-220/天",
+      "applyDate": "2026-06-02",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 17,
+      "company": "哔哩哔哩",
+      "position": "前端实习生(直播)",
+      "location": "上海",
+      "salary": "200-250/天",
+      "applyDate": "2026-05-30",
+      "status": "interview",
+      "note": "二面中"
+    },
+    {
+      "id": 18,
+      "company": "360",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "salary": "180-230/天",
+      "applyDate": "2026-05-28",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 19,
+      "company": "微博",
+      "position": "前端实习生",
+      "location": "北京",
+      "salary": "150-200/天",
+      "applyDate": "2026-05-25",
+      "status": "reject",
+      "note": "经验不匹配"
+    },
+    {
+      "id": 20,
+      "company": "完美世界",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "salary": "180-240/天",
+      "applyDate": "2026-05-22",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 21,
+      "company": "蔚来",
+      "position": "前端开发实习生",
+      "location": "上海",
+      "salary": "200-280/天",
+      "applyDate": "2026-05-20",
+      "status": "pending",
+      "note": ""
+    },
+    {
+      "id": 22,
+      "company": "科大讯飞",
+      "position": "Web前端实习生",
+      "location": "合肥",
+      "salary": "180-240/天",
+      "applyDate": "2026-05-18",
+      "status": "interview",
+      "note": "笔试通过"
     }
   ]
 }
