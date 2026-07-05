@@ -15,7 +15,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/login'
+        redirect: '/dashboard'
       },
       {
         path: 'dashboard',
@@ -38,4 +38,13 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from, next)=>{
+  const token = localStorage.getItem('token')
+  if(to.path !== '/login' && !token){
+    next('/login')
+  }
+  else{
+    next()
+  }
+})
 export default router
